@@ -1,30 +1,51 @@
-import { Link } from 'react-router-dom'
-export default function Details({
-    onDetailsClick
-}) {
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
+export default function Details() {
+    const [book, setBook] = useState({});
+    const { id } = useParams();
+    const navigate = useNavigate();
+
+
+    async function onDelete(id) {
+        fetch('http://localhost:3030/jsonstore/books/' + id, {
+            method: 'DELETE'
+        })
+        
+        navigate('/');
+    }
+
+    useEffect(() => {
+        fetch('http://localhost:3030/jsonstore/books/' + id)
+            .then(response => response.json())
+            .then(result => setBook(result));
+    }, [id]);
+
+
     return (
         <div id="templatemo_content_right">
 
-            <h1>Book Title <span>(by author name)</span></h1>
-            <div className="image_panel"><img src="" alt="CSS Template" width="100" height="150" /></div>
-            <h2>Read the lessons - Watch the videos - Do the exercises</h2>
+            <h1>{book.title}</h1>
+            <div className="image_panel"><img src={book.imageUrl} alt="CSS Template" width="100" height="150" /></div>
+            <h2>Book Details</h2>
             <ul>
-                <li>By Deke <a href="#">McClelland</a></li>
-                <li>January 2024</li>
+                <li>Author: {book.author}</li>
+                <li>Year: 2024</li>
                 <li>Pages: 498</li>
-                <li>ISBN 10: 0-496-91612-0 | ISBN 13: 9780492518154</li>
+                <li>Price:</li>
             </ul>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec dui. Donec nec neque ut quam sodales feugiat. Nam sodales, pede vel dapibus lobortis, ipsum diam molestie risus, a vulputate risus nisl pulvinar lacus.</p>
+            <p>{book.description}</p>
 
-            <p>Donec at arcu. Nunc aliquam, dolor vitae sollicitudin lacinia, nibh orci sagittis diam, dignissim sodales dui erat nec eros. Fusce quis enim. Aenean eleifend, neque hendrerit elementum sodales, odio erat sagittis quam, sed tempor orci magna vitae tellus. Proin dui mauris, tempor eget, pulvinar sed, pretium sit amet, dui. Proin vulputate justo et quam.</p>
 
-            <p>In fermentum, eros ac tincidunt aliquam, elit velit semper nunc, a tincidunt orci lectus a arcu. Nullam commodo, arcu non facilisis imperdiet, felis lectus tempus felis, vitae volutpat augue ante quis leo. Aliquam tristique dolor ac odio. Sed consectetur, lacus et dictum tristique, odio neque elementum ante, nec eleifend leo dolor vel tortor.</p>
 
             <div className="cleaner_with_height">&nbsp;</div>
 
             <div className="buy_now_button">
                 <Link to="/">Back</Link>
+            </div>
+            <div className="detail_button">
+                <a href='javascript:void(0)' onClick={()=>onDelete(book._id)}>Delete</a>
             </div>
 
         </div>
