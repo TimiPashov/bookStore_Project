@@ -1,22 +1,22 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 export default function Nav() {
   return (
     <div id="templatemo_menu">
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <Link to="/search">Search</Link>
+          <NavLink to="/search">Search</NavLink>
         </li>
         <li>
-          <Link to="/create">Add</Link>
+          <NavLink to="/create">Add</NavLink>
         </li>
         <li>
-          <Link to="/login">Login</Link>
+          <NavLink to="/login">Login</NavLink>
         </li>
         <li>
-          <Link to="/register">Register</Link>
+          <NavLink to="/register">Register</NavLink>
         </li>
         <li className="welcome-message">
           <a style={{ color: "yellow" }}>Welcome, user</a>

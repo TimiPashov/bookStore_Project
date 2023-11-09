@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export default function Details() {
@@ -6,13 +6,13 @@ export default function Details() {
     const { id } = useParams();
     const navigate = useNavigate();
 
-
     async function onDelete(id) {
-        fetch('http://localhost:3030/jsonstore/books/' + id, {
+        const response = await fetch('http://localhost:3030/jsonstore/books/' + id, {
             method: 'DELETE'
         })
-        
+
         navigate('/');
+        return response;
     }
 
     useEffect(() => {
@@ -30,9 +30,9 @@ export default function Details() {
             <h2>Book Details</h2>
             <ul>
                 <li>Author: {book.author}</li>
-                <li>Year: 2024</li>
-                <li>Pages: 498</li>
-                <li>Price:</li>
+                <li>Year: {book.year}</li>
+                <li>Genre: {book.genre}</li>
+                <li>Price: {book.price}</li>
             </ul>
 
             <p>{book.description}</p>
@@ -44,8 +44,11 @@ export default function Details() {
             <div className="buy_now_button">
                 <Link to="/">Back</Link>
             </div>
+            <div className="buy_now_button">
+                <Link to={`/edit/${book._id}`}>Edit</Link>
+            </div>
             <div className="detail_button">
-                <a href='javascript:void(0)' onClick={()=>onDelete(book._id)}>Delete</a>
+                <a href='javascript:void(0)' onClick={() => onDelete(book._id)}>Delete</a>
             </div>
 
         </div>

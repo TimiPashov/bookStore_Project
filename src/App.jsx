@@ -8,6 +8,7 @@ import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Nav from "./components/Nav"
 import CreateForm from './components/CreateForm'
+import EditForm from './components/EditForm'
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Catalog />} />
           <Route path='/details/:id' element={<Details />} />
+          <Route path='/edit/:id' element={<EditForm />} />
           <Route path='/create' element={<CreateForm />} />
         </Routes>
 

@@ -7,3 +7,7 @@
 6. Impelented create form and request handler
 7. Implemented delete operating
 8. Implemented redirect to home on delete and create
+9. Implemented edit functionallity
+10. Made CreateForm controlled
+
+ToDo - editform controlled 
