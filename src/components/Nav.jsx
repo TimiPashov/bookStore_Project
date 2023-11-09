@@ -1,26 +1,25 @@
+import { Link } from 'react-router-dom'
 export default function Nav() {
   return (
     <div id="templatemo_menu">
       <ul>
         <li>
-          <a href="index.html" className="current">
-            Home
-          </a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="subpage.html">Search</a>
+          <Link to="/search">Search</Link>
         </li>
         <li>
-          <a href="subpage.html">Add</a>
+          <Link to="/create">Add</Link>
         </li>
         <li>
-          <a href="#">Login</a>
+          <Link to="/login">Login</Link>
         </li>
         <li>
-          <a href="#">Register</a>
+          <Link to="/register">Register</Link>
         </li>
         <li className="welcome-message">
-          <a href="#" style={{ color: "yellow", }}>Welcome, user</a>
+          <a style={{ color: "yellow" }}>Welcome, user</a>
         </li>
       </ul>
     </div>

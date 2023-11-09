@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 export default function BookCard({
     title,
     author,
@@ -17,7 +18,7 @@ export default function BookCard({
                     <a href="subpage.html">Buy Now</a>
                 </div>
                 <div className="detail_button">
-                    <a href="subpage.html">Detail</a>
+                    <Link to="/details">Detail</Link>
                 </div>
             </div>
             <div className="cleaner">&nbsp;</div>
