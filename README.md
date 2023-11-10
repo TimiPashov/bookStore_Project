@@ -10,11 +10,11 @@
 9. Implemented edit functionallity
 10. Made CreateForm controlled
 11. Fixed the Edit Form components to be a controlled one with predefined values
+12. Created Login, Register forms and installed Routes
 ToDo :
 form validation,
 error handling,
-login,
-register,
+login/register functionallity,
 guest/user functionallity,
 profile page,
 buy functionallity
