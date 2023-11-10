@@ -1,14 +1,15 @@
-export default function Footer(){
+import { Link } from "react-router-dom";
+export default function Footer() {
     return (
         <div id="templatemo_footer">
-            <a href="subpage.html">Home</a> | <a href="subpage.html">Search</a> |{" "}
-            <a href="subpage.html">Books</a> | <a href="#">New Releases</a> |{" "}
-            <a href="#">FAQs</a> | <a href="#">Contact Us</a>
+            <Link to="/">Home</Link> | <Link to="/search">Search</Link> |{" "}
+            <Link to="/">Books</Link> | <Link to="#">New Releases</Link> |{" "}
+            <Link to="/FAQs">FAQs</Link> | <Link to="/contacts">Contact Us</Link>
             <br />
             Copyright © 2024{" "}
-            <a href="#">
+            <Link to="#">
                 <strong>Your Company Name</strong>
-            </a>
+            </Link>
             {/* Credit: www.templatemo.com */}{" "}
         </div>
     );

@@ -5,31 +5,31 @@ export default function Categories(){
             <h1>Categories</h1>
             <ul>
               <li>
-                <a href="subpage.html">Donec accumsan urna</a>
+                <a href="#">Adventure stories</a>
               </li>
               <li>
-                <a href="subpage.html">Proin vulputate justo</a>
+                <a href="#">Classics</a>
               </li>
               <li>
-                <a href="#">In sed risus ac feli</a>
+                <a href="#">Crime</a>
               </li>
               <li>
-                <a href="#">Aliquam tristique dolor</a>
+                <a href="#">Fairy tales, fables, and folk tales</a>
               </li>
               <li>
-                <a href="#">Maece nas metus</a>
+                <a href="#">Fantasy</a>
               </li>
               <li>
-                <a href="#">Sed pellentesque placerat</a>
+                <a href="#">Historical fiction</a>
               </li>
               <li>
-                <a href="#">Suspen disse</a>
+                <a href="#">Horror</a>
               </li>
               <li>
-                <a href="#">Maece nas metus</a>
+                <a href="#">Humour and satire</a>
               </li>
               <li>
-                <a href="#">In sed risus ac feli</a>
+                <a href="#">Mystery</a>
               </li>
             </ul>
           </div>
