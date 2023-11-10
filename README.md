@@ -9,5 +9,5 @@
 8. Implemented redirect to home on delete and create
 9. Implemented edit functionallity
 10. Made CreateForm controlled
-
+11. Fixed the Edit Form components to be a controlled one with predefined values
 ToDo - editform controlled 
