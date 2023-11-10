@@ -1,4 +1,4 @@
-
+import './components/App.css'
 import { Route, Routes } from 'react-router-dom'
 
 import Catalog from "./components/Catalog"
@@ -9,6 +9,8 @@ import Header from "./components/Header"
 import Nav from "./components/Nav"
 import CreateForm from './components/CreateForm'
 import EditForm from './components/EditForm'
+import Register from './components/Register'
+import Login from './components/Login'
 
 
 
@@ -28,6 +30,9 @@ function App() {
           <Route path='/details/:id' element={<Details />} />
           <Route path='/edit/:id' element={<EditForm />} />
           <Route path='/create' element={<CreateForm />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+
         </Routes>
 
         <div className="cleaner_with_height">&nbsp;</div>

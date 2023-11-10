@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom';
-import '../components/CreateForm.module.css';
 import { useState } from 'react';
 
 export default function CreateForm() {
