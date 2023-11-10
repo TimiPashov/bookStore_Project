@@ -10,4 +10,11 @@
 9. Implemented edit functionallity
 10. Made CreateForm controlled
 11. Fixed the Edit Form components to be a controlled one with predefined values
-ToDo - editform controlled 
+ToDo :
+form validation,
+error handling,
+login,
+register,
+guest/user functionallity,
+profile page,
+buy functionallity
