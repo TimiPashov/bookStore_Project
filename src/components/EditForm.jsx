@@ -7,7 +7,7 @@ export default function EditForm() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [book, setBook] = useState({});
-    const [title, setTitle] = useState(book.title);
+    const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [genre, setGenre] = useState('');
     const [year, setYear] = useState('');
@@ -35,10 +35,7 @@ export default function EditForm() {
 
     async function onSubmit(e, id) {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const newBook = Object.fromEntries(formData);
-        newBook._id = id;
-
+        const newBook = { title, author, genre, year, price, imageUrl, description, _id: id };
         const response = await fetch('http://localhost:3030/jsonstore/books/' + id, {
             headers: {
                 'Content-type': 'application/json'

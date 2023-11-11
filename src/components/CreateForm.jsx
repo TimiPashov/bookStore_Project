@@ -3,28 +3,31 @@ import { useState } from 'react';
 
 export default function CreateForm() {
     const navigate = useNavigate();
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [genre, setGenre] = useState('');
-    const [year, setYear] = useState('');
-    const [price, setPrice] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [description, setDescription] = useState('');
+    const [values, setValues] = useState({
+        title: '',
+        author: '',
+        genre: '',
+        year: '',
+        price: '',
+        imageUrl: '',
+        description: ''
+    })
 
-
+    const onChange = (e)=>{
+        e.preventDefault();
+        setValues(state=> ({...state, [e.target.name]: e.target.value}))
+    }
 
     async function onSubmit(e) {
-        e.preventDefault();
-        const newBook = { title, author, genre, year, price, imageUrl, description };
-        const response = await fetch('http://localhost:3030/jsonstore/books', {
+        e.preventDefault();       
+        await fetch('http://localhost:3030/jsonstore/books', {
             headers: {
                 'Content-type': 'application/json'
             },
             method: 'post',
-            body: JSON.stringify(newBook)
+            body: JSON.stringify(values)
         });
         navigate('/')
-        return response
     }
 
     return (
@@ -39,8 +42,8 @@ export default function CreateForm() {
                         type="text"
                         name="title"
                         id="title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        value={values.title}
+                        onChange={onChange}
                     />
                 </div>
                 <div>
@@ -49,8 +52,8 @@ export default function CreateForm() {
                         type="text"
                         name="author"
                         id="author"
-                        value={author}
-                        onChange={(e) => setAuthor(e.target.value)}
+                        value={values.author}
+                        onChange={onChange}
                     />
                 </div>
                 <div>
@@ -59,8 +62,8 @@ export default function CreateForm() {
                         type="text"
                         name="genre"
                         id="genre"
-                        value={genre}
-                        onChange={(e) => setGenre(e.target.value)}
+                        value={values.genre}
+                        onChange={onChange}
                     />
                 </div>
                 <div>
@@ -69,8 +72,8 @@ export default function CreateForm() {
                         type="text"
                         name="year"
                         id="year"
-                        value={year}
-                        onChange={(e) => setYear(e.target.value)}
+                        value={values.year}
+                        onChange={onChange}
                     />
                 </div>
                 <div>
@@ -79,8 +82,8 @@ export default function CreateForm() {
                         type="text"
                         name="price"
                         id="price"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        value={values.price}
+                        onChange={onChange}
                     />
                 </div>
                 <div>
@@ -89,8 +92,8 @@ export default function CreateForm() {
                         type="text"
                         name="imageUrl"
                         id="imageUrl"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
+                        value={values.imageUrl}
+                        onChange={onChange}
                     />
                 </div>
                 <div>
@@ -99,8 +102,8 @@ export default function CreateForm() {
                         type="text"
                         name="description"
                         id="description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        value={values.description}
+                        onChange={onChange}
                     />
                 </div>
 

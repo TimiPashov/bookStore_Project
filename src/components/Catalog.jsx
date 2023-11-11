@@ -14,7 +14,7 @@ export default function Catalog() {
 
 
     <div id="templatemo_content_right">
-      {Object.values(books).map(b => <BookCard key={b._id} book={b} bookState={{books, setBooks}} />)}
+      {Object.values(books).map(b => <BookCard key={b._id} book={b} />)}
     </div>
   );
 }
