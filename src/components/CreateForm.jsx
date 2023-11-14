@@ -1,9 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
+import { createBook } from '../services/bookService';
+
 
 export default function CreateForm() {
     const navigate = useNavigate();
-    const { formValues, onChangeHandler } = useForm({
+    const { formValues, onChangeHandler, onSubmit } = useForm({
         title: '',
         author: '',
         genre: '',
@@ -11,29 +13,15 @@ export default function CreateForm() {
         price: '',
         imageUrl: '',
         description: ''
-    })
-
-
-
-    async function onSubmit(e) {
-        e.preventDefault();
-
-        await fetch('http://localhost:3030/jsonstore/books', {
-            headers: {
-                'Content-type': 'application/json'
-            },
-            method: 'post',
-            body: JSON.stringify(formValues)
-        });
-        navigate('/')
-    }
-
+    }, async (values) => {
+        createBook(values);
+        navigate('/');
+    });
     return (
-
         <div id="templatemo_content_right">
 
             <h1>Create new book</h1>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={(e) => onSubmit(e)}>
                 <div>
                     <label htmlFor="title">Title</label>
                     <input
