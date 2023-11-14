@@ -6,6 +6,12 @@ export default function Details() {
     const { id } = useParams();
     const navigate = useNavigate();
 
+    useEffect(() => {
+        fetch('http://localhost:3030/jsonstore/books/' + id)
+            .then(response => response.json())
+            .then(result => setBook(result));
+    }, [id]);
+    
     async function onDelete(id) {
         const response = await fetch('http://localhost:3030/jsonstore/books/' + id, {
             method: 'DELETE'
@@ -15,11 +21,6 @@ export default function Details() {
         return response;
     }
 
-    useEffect(() => {
-        fetch('http://localhost:3030/jsonstore/books/' + id)
-            .then(response => response.json())
-            .then(result => setBook(result));
-    }, [id]);
 
 
     return (

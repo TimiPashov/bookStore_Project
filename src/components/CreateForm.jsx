@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useForm } from '../hooks/useForm';
 
 export default function CreateForm() {
     const navigate = useNavigate();
-    const [values, setValues] = useState({
+    const { formValues, onChangeHandler } = useForm({
         title: '',
         author: '',
         genre: '',
@@ -13,19 +13,17 @@ export default function CreateForm() {
         description: ''
     })
 
-    const onChange = (e)=>{
-        e.preventDefault();
-        setValues(state=> ({...state, [e.target.name]: e.target.value}))
-    }
+
 
     async function onSubmit(e) {
-        e.preventDefault();       
+        e.preventDefault();
+
         await fetch('http://localhost:3030/jsonstore/books', {
             headers: {
                 'Content-type': 'application/json'
             },
             method: 'post',
-            body: JSON.stringify(values)
+            body: JSON.stringify(formValues)
         });
         navigate('/')
     }
@@ -42,8 +40,8 @@ export default function CreateForm() {
                         type="text"
                         name="title"
                         id="title"
-                        value={values.title}
-                        onChange={onChange}
+                        value={formValues.title}
+                        onChange={onChangeHandler}
                     />
                 </div>
                 <div>
@@ -52,8 +50,8 @@ export default function CreateForm() {
                         type="text"
                         name="author"
                         id="author"
-                        value={values.author}
-                        onChange={onChange}
+                        value={formValues.author}
+                        onChange={onChangeHandler}
                     />
                 </div>
                 <div>
@@ -62,8 +60,8 @@ export default function CreateForm() {
                         type="text"
                         name="genre"
                         id="genre"
-                        value={values.genre}
-                        onChange={onChange}
+                        value={formValues.genre}
+                        onChange={onChangeHandler}
                     />
                 </div>
                 <div>
@@ -72,8 +70,8 @@ export default function CreateForm() {
                         type="text"
                         name="year"
                         id="year"
-                        value={values.year}
-                        onChange={onChange}
+                        value={formValues.year}
+                        onChange={onChangeHandler}
                     />
                 </div>
                 <div>
@@ -82,8 +80,8 @@ export default function CreateForm() {
                         type="text"
                         name="price"
                         id="price"
-                        value={values.price}
-                        onChange={onChange}
+                        value={formValues.price}
+                        onChange={onChangeHandler}
                     />
                 </div>
                 <div>
@@ -92,8 +90,8 @@ export default function CreateForm() {
                         type="text"
                         name="imageUrl"
                         id="imageUrl"
-                        value={values.imageUrl}
-                        onChange={onChange}
+                        value={formValues.imageUrl}
+                        onChange={onChangeHandler}
                     />
                 </div>
                 <div>
@@ -102,8 +100,8 @@ export default function CreateForm() {
                         type="text"
                         name="description"
                         id="description"
-                        value={values.description}
-                        onChange={onChange}
+                        value={formValues.description}
+                        onChange={onChangeHandler}
                     />
                 </div>
 

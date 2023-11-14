@@ -15,6 +15,8 @@ export default function EditForm() {
     const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
 
+   
+
     useEffect(() => {
         fetch('http://localhost:3030/jsonstore/books/' + id)
             .then(response => response.json())
