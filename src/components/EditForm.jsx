@@ -1,5 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { editBook, getBookById } from '../services/bookService';
+
 
 
 
@@ -14,42 +16,34 @@ export default function EditForm() {
     const [price, setPrice] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
-
-   
-
-    useEffect(() => {
-        fetch('http://localhost:3030/jsonstore/books/' + id)
-            .then(response => response.json())
-            .then(setBook)
-    }, [id]);
+    
 
     useEffect(() => {
-        setTitle(book.title || '');
-        setAuthor(book.author || '');
-        setGenre(book.genre || '');
-        setYear(book.year || '');
-        setPrice(book.price || '');
-        setImageUrl(book.imageUrl || '');
-        setDescription(book.description || '');
+        getBookById(id)
+            .then(response => setBook(response));          
+        }, [id]);
+        
+        
+        useEffect(() => {
+            setTitle(book.title || 'Loading...');
+            setAuthor(book.author || 'Loading...');
+            setGenre(book.genre || 'Loading...');
+            setYear(book.year || 'Loading...');
+            setPrice(book.price || 'Loading...');
+            setImageUrl(book.imageUrl || 'Loading...');
+            setDescription(book.description || 'Loading...');
+       
+
     }, [book]);
-
 
 
     async function onSubmit(e, id) {
         e.preventDefault();
         const newBook = { title, author, genre, year, price, imageUrl, description, _id: id };
-        const response = await fetch('http://localhost:3030/jsonstore/books/' + id, {
-            headers: {
-                'Content-type': 'application/json'
-            },
-            method: 'put',
-            body: JSON.stringify(newBook)
-        });
+        editBook(newBook, id)
         navigate('/details/' + id)
-        return response
+
     }
-
-
 
     return (
         <form onSubmit={(e) => onSubmit(e, id)}>

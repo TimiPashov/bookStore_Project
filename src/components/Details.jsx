@@ -1,5 +1,7 @@
-import { Link, useParams, useNavigate} from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { deleteBook } from '../services/bookService';
+
 
 export default function Details() {
     const [book, setBook] = useState({});
@@ -7,18 +9,14 @@ export default function Details() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:3030/jsonstore/books/' + id)
+        fetch('http://localhost:3030/data/books/' + id)
             .then(response => response.json())
             .then(result => setBook(result));
     }, [id]);
-    
-    async function onDelete(id) {
-        const response = await fetch('http://localhost:3030/jsonstore/books/' + id, {
-            method: 'DELETE'
-        })
 
+    async function onDelete(id) {
+        await deleteBook(id);
         navigate('/');
-        return response;
     }
 
 
@@ -46,7 +44,9 @@ export default function Details() {
                 <Link to="/">Back</Link>
             </div>
             <div className="buy_now_button">
+
                 <Link to={`/edit/${book._id}`}>Edit</Link>
+
             </div>
             <div className="detail_button">
                 <a href='javascript:void(0)' onClick={() => onDelete(book._id)}>Delete</a>
