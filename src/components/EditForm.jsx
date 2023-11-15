@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { editBook, getBookById } from '../services/bookService';
+import { UserContext } from '../contexts/UserContext';
 
 
 
@@ -16,37 +17,43 @@ export default function EditForm() {
     const [price, setPrice] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
-    
+    const userData = useContext(UserContext);
+    const token = userData.user && userData.user.accessToken;
 
     useEffect(() => {
         getBookById(id)
-            .then(response => setBook(response));          
-        }, [id]);
-        
-        
-        useEffect(() => {
-            setTitle(book.title || 'Loading...');
-            setAuthor(book.author || 'Loading...');
-            setGenre(book.genre || 'Loading...');
-            setYear(book.year || 'Loading...');
-            setPrice(book.price || 'Loading...');
-            setImageUrl(book.imageUrl || 'Loading...');
-            setDescription(book.description || 'Loading...');
-       
+            .then(response => setBook(response));
+    }, [id]);
+
+
+    useEffect(() => {
+        setTitle(book.title || 'Loading...');
+        setAuthor(book.author || 'Loading...');
+        setGenre(book.genre || 'Loading...');
+        setYear(book.year || 'Loading...');
+        setPrice(book.price || 'Loading...');
+        setImageUrl(book.imageUrl || 'Loading...');
+        setDescription(book.description || 'Loading...');
+
 
     }, [book]);
 
 
     async function onSubmit(e, id) {
         e.preventDefault();
-        const newBook = { title, author, genre, year, price, imageUrl, description, _id: id };
-        editBook(newBook, id)
-        navigate('/details/' + id)
+        const newBook = { title, author, genre, year, price, imageUrl, description, _id: id, _ownerId: userData.user._id };
+        try {
+             await editBook(newBook, id, token)
+    
+            navigate('/details/' + id)
+        } catch (err) {
+            console.log(err)
+        }
 
     }
 
     return (
-        <form onSubmit={(e) => onSubmit(e, id)}>
+        <form method='put' onSubmit={(e) => onSubmit(e, id)}>
             <div>
                 <label htmlFor="title">Title</label>
                 <input

@@ -1,26 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
+
+
 export default function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setUsername] = useState('');
     const [password, setPassword] = useState('');
- 
-
-    async function onSubmit(e) {
-        e.preventDefault()
-    }
-
-
+    const { onLoginSubmit } = useContext(UserContext);
+    
     return (
         <div id="templatemo_content_right">
 
             <h1>Login</h1>
-            <form onSubmit={onSubmit}>
+            <form method="post" onSubmit={(e) => {onLoginSubmit(e, {email, password})}}>
                 <div>
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="email">Email</label>
                     <input
                         type="text"
-                        name="username"
+                        name="email"
                         id="username"
-                        value={username}
+                        value={email}
                         onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
@@ -33,7 +31,7 @@ export default function Login() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                </div>           
+                </div>
                 <div style={{ padding: '15px' }}>
                     <div className="buy_now_button">
                         <button type='submit'>Submit</button>

@@ -1,25 +1,25 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
 export default function Register() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repass, setRepass] = useState('');
+    const { onRegisterSubmit } = useContext(UserContext);
 
-    async function onSubmit(e) {
-        e.preventDefault()
-    }
+
     return (
         <div id="templatemo_content_right">
 
             <h1>Register</h1>
-            <form onSubmit={onSubmit}>
+            <form method="post" onSubmit={(e) => { onRegisterSubmit(e, { email, password }) }}>
                 <div>
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="email">email</label>
                     <input
                         type="text"
-                        name="username"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        name="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>

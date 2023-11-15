@@ -1,10 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { createBook } from '../services/bookService';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
 
 
 export default function CreateForm() {
     const navigate = useNavigate();
+    const userData = useContext(UserContext);
+    const token = userData.user.accessToken;
     const { formValues, onChangeHandler, onSubmit } = useForm({
         title: '',
         author: '',
@@ -14,7 +18,7 @@ export default function CreateForm() {
         imageUrl: '',
         description: ''
     }, async (values) => {
-        createBook(values);
+        await createBook(values, token);
         navigate('/');
     });
     return (

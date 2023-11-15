@@ -1,5 +1,10 @@
 import './components/App.css'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { UserContext } from './contexts/UserContext'
+import { logout } from './services/userService'
+import { loginHandler, registerHandler } from './handlers/handlers'
+
 
 import Catalog from "./components/Catalog"
 import Categories from "./components/Categories"
@@ -15,30 +20,61 @@ import Login from './components/Login'
 
 
 
-
 function App() {
+  const [user, setUser] = useState();
+  const navigate = useNavigate();
 
+
+
+
+  async function onLoginSubmit(e, data) {
+    e.preventDefault();
+    try {
+      const result = await loginHandler(data);
+      setUser(result);
+      navigate('/');
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function onRegisterSubmit(e, data){
+    e.preventDefault();
+    try{
+      const result = await registerHandler(data);
+      setUser(result);
+      navigate('/')
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  async function onLogout() {
+    await logout(user.accessToken);
+  }
 
   return (
-    <div id="templatemo_container">
-      <Nav />
-      <Header />
-      <div id="templatemo_content">
-        <Categories />
-        <Routes>
-          <Route path='/' element={<Catalog />} />
-          <Route path='/details/:id' element={<Details />} />
-          <Route path='/edit/:id' element={<EditForm />} />
-          <Route path='/create' element={<CreateForm />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
+    <UserContext.Provider value={{onRegisterSubmit, onLogout, onLoginSubmit, user }}>
+      <div id="templatemo_container">
+        <Nav />
+        <Header />
+        <div id="templatemo_content">
+          <Categories />
+          <Routes>
+            <Route path='/' element={<Catalog />} />
+            <Route path='/details/:id' element={<Details />} />
+            <Route path='/edit/:id' element={<EditForm />} />
+            <Route path='/create' element={<CreateForm />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
 
-        </Routes>
+          </Routes>
 
-        <div className="cleaner_with_height">&nbsp;</div>
+          <div className="cleaner_with_height">&nbsp;</div>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </UserContext.Provider>
   )
 }
 

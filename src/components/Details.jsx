@@ -1,12 +1,16 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { deleteBook } from '../services/bookService';
+import { UserContext } from '../contexts/UserContext';
 
 
 export default function Details() {
     const [book, setBook] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
+    const userData = useContext(UserContext);
+    const isOwner = userData.user && userData.user._id === book._ownerId;
+
 
     useEffect(() => {
         fetch('http://localhost:3030/data/books/' + id)
@@ -15,7 +19,7 @@ export default function Details() {
     }, [id]);
 
     async function onDelete(id) {
-        await deleteBook(id);
+        await deleteBook(id, userData.user.accessToken);
         navigate('/');
     }
 
@@ -43,14 +47,14 @@ export default function Details() {
             <div className="buy_now_button">
                 <Link to="/">Back</Link>
             </div>
-            <div className="buy_now_button">
-
-                <Link to={`/edit/${book._id}`}>Edit</Link>
-
-            </div>
-            <div className="detail_button">
-                <a href='javascript:void(0)' onClick={() => onDelete(book._id)}>Delete</a>
-            </div>
+            {isOwner && <div id="owner">
+                <div className="buy_now_button">
+                    <Link to={`/edit/${book._id}`}>Edit</Link>
+                </div>
+                <div className="detail_button">
+                    <Link onClick={() => onDelete(book._id)}>Delete</Link>
+                </div>
+            </div>}
 
         </div>
     )
