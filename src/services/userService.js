@@ -30,10 +30,12 @@ export async function register(userData) {
     return result;
 }
 
-export function logout(token) {
-    fetch(`${baseURL}/logout`, {
+export async function logout(token) {
+   await fetch(`${baseURL}/logout`, {
         headers: {
             'X-Authorization': token
         }
     });
+    // localStorage.clear();
+
 }

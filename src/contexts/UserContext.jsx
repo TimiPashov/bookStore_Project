@@ -37,7 +37,7 @@ export function AuthProvider({ children }) {
     async function onLogout() {
         await logout(user.accessToken);
         setUser();
-        // navigate('/');
+        localStorage.clear()
     }
 
     return (
