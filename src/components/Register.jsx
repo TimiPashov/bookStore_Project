@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { useState } from "react";
+import { useUserContext } from "../contexts/UserContext";
 export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repass, setRepass] = useState('');
-    const { onRegisterSubmit } = useContext(UserContext);
+    const { onRegisterSubmit } = useUserContext();
 
 
     return (

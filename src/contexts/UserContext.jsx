@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { logout } from '../services/userService'
 import { loginHandler, registerHandler } from '../handlers/handlers'
@@ -43,4 +43,9 @@ export function AuthProvider({ children }) {
             {children}
         </UserContext.Provider>
     )
+}
+
+export function useUserContext() {
+    const context = useContext(UserContext);
+    return context;
 }

@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
+import {  useState } from "react";
+import {  useUserContext } from "../contexts/UserContext";
 
 
 export default function Login() {
     const [email, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { onLoginSubmit } = useContext(UserContext);
+    const { onLoginSubmit } = useUserContext();
     
     return (
         <div id="templatemo_content_right">

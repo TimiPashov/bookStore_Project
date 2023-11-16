@@ -25,6 +25,7 @@ export async function register(userData) {
     });
 
     const result = await response.json();
+    result.password = '';
 
     return result;
 }
