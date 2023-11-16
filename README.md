@@ -14,8 +14,8 @@
 13. Implemented login/register functionallity,authorized requests
 14. Added guest/user functionallity
 
-<!-- TODO:
+TODO. :
 form validation,
 error handling,
 profile page,
-buy functionallity -->
+buy functionallity
