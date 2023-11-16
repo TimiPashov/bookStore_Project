@@ -24,8 +24,7 @@ export async function registerHandler(data) {
         const result = await register(data);
         if (result.code === 409) {
             throw new Error(result.message)
-        }
-        
+        }      
         return result;
     } catch (err) {
         console.log(err)

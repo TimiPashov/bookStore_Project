@@ -1,14 +1,15 @@
 /* eslint-disable react/prop-types */
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { logout } from '../services/userService'
 import { loginHandler, registerHandler } from '../handlers/handlers'
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const UserContext = createContext();
 
 export function AuthProvider({ children }) {
-    const [user, setUser] = useState();
+    const [user, setUser] = useLocalStorage('user');
     const navigate = useNavigate();
 
     async function onLoginSubmit(e, data) {
@@ -33,8 +34,9 @@ export function AuthProvider({ children }) {
         }
     }
 
-    function onLogout() {
-        logout(user.accessToken);
+    async function onLogout() {
+        await logout(user.accessToken);
+        setUser();
         // navigate('/');
     }
 
