@@ -29,8 +29,8 @@ export async function register(userData) {
     return result;
 }
 
-export async function logout(token) {
-    await fetch(`${baseURL}/logout`, {
+export function logout(token) {
+    fetch(`${baseURL}/logout`, {
         headers: {
             'X-Authorization': token
         }

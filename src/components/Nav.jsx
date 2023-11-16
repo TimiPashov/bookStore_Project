@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 
 
@@ -17,7 +17,7 @@ export default function Nav() {
         <li>
           <NavLink to="/search">Search</NavLink>
         </li>
-        {isUser && <div id="user"><li><NavLink to="/create">Add</NavLink><NavLink to="/" onClick={() => userData.user.onLogout()} >Logout</NavLink></li></div>}
+        {isUser && <div id="user"><li><NavLink to="/create">Add</NavLink><Link onClick={() => userData.user.onLogout()} >Logout</Link></li></div>}
         {!isUser && <div id="guest">
           <li>
             <NavLink to="/login">Login</NavLink>

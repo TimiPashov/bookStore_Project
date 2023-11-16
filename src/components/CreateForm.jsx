@@ -8,7 +8,7 @@ import { UserContext } from '../contexts/UserContext';
 export default function CreateForm() {
     const navigate = useNavigate();
     const userData = useContext(UserContext);
-    const token = userData.user.accessToken;
+    const token = userData.user && userData.user.accessToken;
     const { formValues, onChangeHandler, onSubmit } = useForm({
         title: '',
         author: '',
