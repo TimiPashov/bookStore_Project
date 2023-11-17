@@ -1,0 +1,47 @@
+.templatemo_content_right {
+	float: right;
+	width: 670px;
+}
+
+.templatemo_content_right h1 {
+	padding: 10px;
+	margin: 0 0 20px 0;
+	font-size: 15px;
+	color: #cbc750;
+	background: url(recource/images/templatemo_h1_bg.jpg);
+}
+
+.templatemo_content_right h2 {
+	padding: 0 0 0 0;
+	margin: 0 0 20px 0;
+	font-size: 12px;
+	color: #e6e154;
+}
+
+.templatemo_content_right h3 {
+	padding: 0;
+	margin: 0 0 20px 0;
+	font-size: 18px;
+	color: #85391f;
+}
+
+.templatemo_content_right ul {
+	margin: 0 0 20px 0;
+	padding: 0 0 0 20px;
+	list-style: none;
+}
+
+.templatemo_content_right li {
+	padding: 0 0 3px 0;
+}
+
+.templatemo_content_right .image_panel {
+	float: left;
+	width: 100px;
+	margin-right: 20px;
+}
+
+.templatemo_content_right p {
+	text-align: justify;
+	padding: 0 0 8px 0;
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useUserContext } from "../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext";
 import styles from './Register.module.css'
+import { Link } from "react-router-dom";
 
 
 
@@ -12,7 +13,7 @@ export default function Register() {
     const [error, setError] = useState(false)
 
     return (
-        <div id="templatemo_content_right">
+        <div id="templatemo_content_right" className={styles.templatemo_content_right}>
 
             <h1>Register</h1>
             <form method="post" onSubmit={(e) => { onRegisterSubmit(e, { email, password, repass }, { setError, setEmail, setPassword, setRepass }) }}>
@@ -57,11 +58,11 @@ export default function Register() {
                 </div>}
 
                 <div style={{ padding: '15px' }}>
-                    <div className="buy_now_button">
-                        <button type='submit'>Submit</button>
+                    <div className={styles.buy_now_button}>
+                        <Link onClick={(e) => { onRegisterSubmit(e, { email, password, repass }, { setError, setEmail, setPassword, setRepass }) }}>Submit</Link>
                     </div>
-                    <div className="detail_button">
-                        <a to={'/'}>Back</a>
+                    <div className={styles.detail_button}>
+                        <Link to={'/'}>Back</Link>
                     </div>
                 </div>
             </form>

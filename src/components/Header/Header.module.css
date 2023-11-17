@@ -1,0 +1,48 @@
+.templatemo_header {
+	clear: both;
+	width: 960px;
+	height: 285px;
+	padding: 0;
+	margin: 0;
+	background: url(recource/images/templatemo_header_bg.jpg) no-repeat;
+}
+
+.templatemo_header a,a:hover {
+	color: #ffffff;
+}
+
+.templatemo_special_offers {
+	float: left;
+	font-size: 14px;	
+	margin-top: 95px;
+	margin-left: 490px;
+	width: 180px;
+}
+
+.templatemo_special_offers a {
+	font-size: 12px;
+}
+
+.templatemo_special_offers  p {
+	margin: 0 0 20px 0;
+}
+.templatemo_special_offers p span {
+	font-size: 18px;
+}
+
+.templatemo_new_books {
+	float: left;
+	margin-top: 90px;	
+	margin-left: 55px;
+	width: 180px;
+}
+
+.templatemo_new_books ul {
+	 margin: 0 0 10px 0;
+	 padding: 0 0 0 20px;
+}
+
+.templatemo_new_books li {
+	 margin: 0;
+	 padding: 0; 
+}

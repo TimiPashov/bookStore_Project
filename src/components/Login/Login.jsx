@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useUserContext } from "../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext";
 import styles from './Login.module.css';
+import { Link } from "react-router-dom";
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ export default function Login() {
     const [error, setError] = useState(false);
 
     return (
-        <div id="templatemo_content_right">
+        <div id="templatemo_content_right" className={styles.templatemo_content_right}>
 
             <h1>Login</h1>
             <form method="post" onSubmit={(e) => { onLoginSubmit(e, { email, password }, setError, setEmail, setPassword) }}>
@@ -40,11 +41,11 @@ export default function Login() {
                     <p>{error}</p>
                 </div>}
                 <div style={{ padding: '15px' }}>
-                    <div className="buy_now_button">
-                        <button type='submit'>Submit</button>
+                    <div className={styles.buy_now_button}>
+                        <Link onClick={(e) => { onLoginSubmit(e, { email, password }, setError, setEmail, setPassword) }}>Submit</Link>
                     </div>
-                    <div className="detail_button">
-                        <a to={'/'}>Back</a>
+                    <div className={styles.detail_button}>
+                        <Link to={'/'}>Back</Link>
                     </div>
                 </div>
             </form>

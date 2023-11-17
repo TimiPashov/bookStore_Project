@@ -1,9 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useForm } from '../hooks/useForm';
-import { createBook } from '../services/bookService';
+import { useForm } from '../../hooks/useForm';
+import { createBook } from '../../services/bookService';
 import { useContext } from 'react';
-import { UserContext } from '../contexts/UserContext';
+import { UserContext } from '../../contexts/UserContext';
 
+import styles from './CreateForm.module.css';
 
 export default function CreateForm() {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function CreateForm() {
         navigate('/');
     });
     return (
-        <div id="templatemo_content_right">
+        <div id="templatemo_content_right" className={styles.templatemo_content_right}>
 
             <h1>Create new book</h1>
             <form onSubmit={(e) => onSubmit(e)}>
@@ -98,10 +99,10 @@ export default function CreateForm() {
                 </div>
 
                 <div style={{ padding: '15px' }}>
-                    <div className="buy_now_button">
-                        <button type='submit'>Submit</button>
+                    <div className={styles.buy_now_button}>
+                        <Link onClick={(e) => onSubmit(e)}>Submit</Link>
                     </div>
-                    <div className="detail_button">
+                    <div className={styles.detail_button}>
                         <Link to={'/'}>Back</Link>
                     </div>
                 </div>

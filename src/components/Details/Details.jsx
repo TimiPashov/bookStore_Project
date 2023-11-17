@@ -1,8 +1,9 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-import { deleteBook } from '../services/bookService';
-import { UserContext } from '../contexts/UserContext';
+import { deleteBook } from '../../services/bookService';
+import { UserContext } from '../../contexts/UserContext';
 
+import styles from './Details.module.css';
 
 export default function Details() {
     const [book, setBook] = useState({});
@@ -26,10 +27,10 @@ export default function Details() {
 
 
     return (
-        <div id="templatemo_content_right">
+        <div id="templatemo_content_right" className={styles.templatemo_content_right}>
 
             <h1>{book.title}</h1>
-            <div className="image_panel"><img src={book.imageUrl} alt="CSS Template" width="100" height="150" /></div>
+            <div className={styles.image_panel}><img src={book.imageUrl} alt="CSS Template" width="100" height="150" /></div>
             <h2>Book Details</h2>
             <ul>
                 <li>Author: {book.author}</li>
@@ -42,19 +43,22 @@ export default function Details() {
 
 
 
-            <div className="cleaner_with_height">&nbsp;</div>
 
-            <div className="buy_now_button">
+
+            <div className={styles.detail_button}>
                 <Link to="/">Back</Link>
             </div>
-            {isOwner && <div id="owner">
-                <div className="buy_now_button">
+            {isOwner && <>
+                <div className={styles.buy_now_button}>
                     <Link to={`/edit/${book._id}`}>Edit</Link>
                 </div>
-                <div className="detail_button">
+                <div className={styles.delete_button}>
                     <Link onClick={() => onDelete(book._id)}>Delete</Link>
                 </div>
-            </div>}
+            </>
+            }
+
+            {/* <div className={styles.cleaner_with_height}>&nbsp;</div> */}
 
         </div>
     )
