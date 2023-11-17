@@ -13,9 +13,10 @@
 12. Created Login, Register forms and installed Routes
 13. Implemented login/register functionallity,authorized requests
 14. Added guest/user functionallity
+15. Added login/register validation
 
 TODO. :
-form validation,
+create book validation,
 error handling,
 profile page,
 buy functionallity

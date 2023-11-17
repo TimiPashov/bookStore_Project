@@ -12,25 +12,31 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useLocalStorage('user');
     const navigate = useNavigate();
 
-    async function onLoginSubmit(e, data) {
+    async function onLoginSubmit(e, data, setError, setEmail, setPassword) {
         e.preventDefault();
         try {
-            const result = await loginHandler(data);
-            setUser(result);
-            navigate('/');
+            const result = await loginHandler(data);          
+                setUser(result);
+                navigate('/');           
         } catch (err) {
-            console.log(err);
+            setError(err.message);
+            setEmail('');
+            setPassword('');
         }
     }
 
-    async function onRegisterSubmit(e, data) {
+    async function onRegisterSubmit(e, data, setters) {
         e.preventDefault();
         try {
-            const result = await registerHandler(data);
-            setUser(result);
-            navigate('/')
+            const result = await registerHandler(data);          
+                setUser(result);
+                navigate('/');          
         } catch (err) {
-            console.log(err);
+            setters.setError(err.message);
+            setters.setEmail('');
+            setters.setPassword('');
+            setters.setRepass('')
+
         }
     }
 

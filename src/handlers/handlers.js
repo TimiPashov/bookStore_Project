@@ -8,25 +8,21 @@ export function onDetailsClick(state, setState) {
 }
 
 export async function loginHandler(data) {
-    try {
-        const result = await login(data);
-        if (result.code === 403) {
-            throw new Error(result.message)
-        }
-        return result;
-    } catch (err) {
-        console.log(err);
+
+    const result = await login(data);
+    if (result.code === 403) {
+        throw new Error(result.message)
     }
+    return result;
 }
 
 export async function registerHandler(data) {
-    try {
-        const result = await register(data);
-        if (result.code === 409) {
-            throw new Error(result.message)
-        }      
-        return result;
-    } catch (err) {
-        console.log(err)
+    if (data.password != data.repass) {
+        throw new Error('Passwords must match');
     }
+    const result = await register(data);
+    if (result.code === 409 || result.code === 400) {
+        throw new Error(result.message)
+    }
+    return result;
 }
