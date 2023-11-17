@@ -17,6 +17,6 @@
 
 TODO. :
 create book validation,
-error handling,
+create game handling,
 profile page,
 buy functionallity
