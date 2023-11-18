@@ -1,4 +1,7 @@
+
+import { createBook } from "../services/bookService";
 import { login, register } from "../services/userService";
+
 
 
 
@@ -25,4 +28,13 @@ export async function registerHandler(data) {
         throw new Error(result.message)
     }
     return result;
+}
+
+export async function createHandler(data, token){  
+    
+        if (Object.values(data).some(x => x === '')) {
+            throw new Error('All fields required');
+        }
+        await createBook(data, token);
+  
 }

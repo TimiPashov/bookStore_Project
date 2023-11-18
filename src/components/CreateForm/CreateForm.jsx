@@ -5,6 +5,7 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 
 import styles from './CreateForm.module.css';
+import { createHandler } from '../../handlers/handlers';
 
 export default function CreateForm() {
     const navigate = useNavigate();
@@ -20,18 +21,13 @@ export default function CreateForm() {
         imageUrl: '',
         description: ''
     }, async (values) => {
-        try{
-            
-            if (Object.values(values).some(x => x === '')){
-
-                throw new Error('All fields required');
-            }
-            await createBook(values, token);
+        try {
+            await createHandler(values, token);
             navigate('/');
-
-        }catch(err){
+        } catch (err) {
             setError(err.message)
         }
+
     });
     return (
         <div id="templatemo_content_right" className={styles.templatemo_content_right}>
