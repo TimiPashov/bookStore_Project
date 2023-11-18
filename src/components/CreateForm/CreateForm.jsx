@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { createBook } from '../../services/bookService';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 
 import styles from './CreateForm.module.css';
@@ -9,6 +9,7 @@ import styles from './CreateForm.module.css';
 export default function CreateForm() {
     const navigate = useNavigate();
     const userData = useContext(UserContext);
+    const [error, setError] = useState(false)
     const token = userData.user && userData.user.accessToken;
     const { formValues, onChangeHandler, onSubmit } = useForm({
         title: '',
@@ -19,8 +20,18 @@ export default function CreateForm() {
         imageUrl: '',
         description: ''
     }, async (values) => {
-        await createBook(values, token);
-        navigate('/');
+        try{
+            
+            if (Object.values(values).some(x => x === '')){
+
+                throw new Error('All fields required');
+            }
+            await createBook(values, token);
+            navigate('/');
+
+        }catch(err){
+            setError(err.message)
+        }
     });
     return (
         <div id="templatemo_content_right" className={styles.templatemo_content_right}>
@@ -37,6 +48,9 @@ export default function CreateForm() {
                         onChange={onChangeHandler}
                     />
                 </div>
+                {error && <div className={styles.error}>
+                    <p>{error}</p>
+                </div>}
                 <div>
                     <label htmlFor="author">Author</label>
                     <input
@@ -47,6 +61,9 @@ export default function CreateForm() {
                         onChange={onChangeHandler}
                     />
                 </div>
+                {error && <div className={styles.error}>
+                    <p>{error}</p>
+                </div>}
                 <div>
                     <label htmlFor="genre">Genre</label>
                     <input
@@ -57,6 +74,9 @@ export default function CreateForm() {
                         onChange={onChangeHandler}
                     />
                 </div>
+                {error && <div className={styles.error}>
+                    <p>{error}</p>
+                </div>}
                 <div>
                     <label htmlFor="year">Year</label>
                     <input
@@ -67,6 +87,9 @@ export default function CreateForm() {
                         onChange={onChangeHandler}
                     />
                 </div>
+                {error && <div className={styles.error}>
+                    <p>{error}</p>
+                </div>}
                 <div>
                     <label htmlFor="price">Price</label>
                     <input
@@ -77,6 +100,9 @@ export default function CreateForm() {
                         onChange={onChangeHandler}
                     />
                 </div>
+                {error && <div className={styles.error}>
+                    <p>{error}</p>
+                </div>}
                 <div>
                     <label htmlFor="imageUrl">ImageUrl</label>
                     <input
@@ -87,6 +113,9 @@ export default function CreateForm() {
                         onChange={onChangeHandler}
                     />
                 </div>
+                {error && <div className={styles.error}>
+                    <p>{error}</p>
+                </div>}
                 <div>
                     <label htmlFor="description">Description</label>
                     <textarea
