@@ -27,9 +27,9 @@ export default function Register() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                {error && <div className={styles.error}>
-                    <p>{error}</p>
-                </div>}
+                {error?.code == 409 || error?.code == 400 ? <div className={styles.error}>
+                    <p>{error.message}</p>
+                </div> : null}
                 <div>
                     <label htmlFor="password">Password</label>
                     <input
@@ -40,9 +40,9 @@ export default function Register() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                {error && <div className={styles.error}>
-                    <p>{error}</p>
-                </div>}
+                {error?.code == 'missmatch' || error?.code === 400 ? <div className={styles.error}>
+                    <p>{error.message}</p>
+                </div>: null}
                 <div>
                     <label htmlFor="repass">Repeat password</label>
                     <input
@@ -53,8 +53,8 @@ export default function Register() {
                         onChange={(e) => setRepass(e.target.value)}
                     />
                 </div>
-                {error && <div className={styles.error}>
-                    <p>{error}</p>
+                {error?.code == 'missmatch'  && <div className={styles.error}>
+                    <p>{error.message}</p>
                 </div>}
 
                 <div style={{ padding: '15px' }}>

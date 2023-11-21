@@ -21,20 +21,21 @@ export async function loginHandler(data) {
 
 export async function registerHandler(data) {
     if (data.password != data.repass) {
-        throw new Error('Passwords must match');
+        throw { message: 'Passwords must match', code: 'missmatch' };
     }
     const result = await register(data);
     if (result.code === 409 || result.code === 400) {
-        throw new Error(result.message)
+
+        throw result
     }
     return result;
 }
 
-export async function createHandler(data, token){  
-    
-        if (Object.values(data).some(x => x === '')) {
-            throw new Error('All fields required');
-        }
-        await createBook(data, token);
-  
+export async function createHandler(data, token) {
+
+    if (Object.values(data).some(x => x === '')) {
+        throw new Error('All fields required');
+    }
+    await createBook(data, token);
+
 }

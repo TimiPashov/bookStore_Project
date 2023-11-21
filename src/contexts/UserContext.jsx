@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
                 setUser(result);
                 navigate('/');          
         } catch (err) {
-            setters.setError(err.message);
+            setters.setError(err);
             setters.setEmail('');
             setters.setPassword('');
             setters.setRepass('')
