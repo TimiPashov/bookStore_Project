@@ -20,7 +20,6 @@ export function AuthProvider({ children }) {
                 navigate('/');           
         } catch (err) {
             setError(err.message);
-            setEmail('');
             setPassword('');
         }
     }

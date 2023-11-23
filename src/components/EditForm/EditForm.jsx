@@ -9,6 +9,7 @@ import styles from './EditForm.module.css';
 export default function EditForm() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const [error, setError] = useState(false);
     const [book, setBook] = useState({});
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
@@ -43,11 +44,18 @@ export default function EditForm() {
         e.preventDefault();
         const newBook = { title, author, genre, year, price, imageUrl, description, _id: id, _ownerId: userData.user._id };
         try {
+            if (Object.values(newBook).some(x => x === '')) {
+                const err = {};
+                for (let field of Object.entries(newBook)){
+                    err[field[0]] = field[1];
+                }
+                throw err;
+            }
             await editBook(newBook, id, token)
-
             navigate('/details/' + id)
         } catch (err) {
             console.log(err)
+            setError(err)
         }
 
     }

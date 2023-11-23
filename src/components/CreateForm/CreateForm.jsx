@@ -24,7 +24,7 @@ export default function CreateForm() {
             await createHandler(values, token);
             navigate('/');
         } catch (err) {
-            setError(err.message)
+            setError(err)
         }
 
     });
@@ -41,10 +41,11 @@ export default function CreateForm() {
                         id="title"
                         value={formValues.title}
                         onChange={onChangeHandler}
+                        style={error?.title == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
-                {error && <div className={styles.error}>
-                    <p>{error}</p>
+                {error?.title === '' && <div className={styles.error}>
+                    <p>Title is required</p>
                 </div>}
                 <div>
                     <label htmlFor="author">Author</label>
@@ -54,10 +55,11 @@ export default function CreateForm() {
                         id="author"
                         value={formValues.author}
                         onChange={onChangeHandler}
+                        style={error?.author == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
-                {error && <div className={styles.error}>
-                    <p>{error}</p>
+                {error?.author === '' && <div className={styles.error}>
+                    <p>Author is required</p>
                 </div>}
                 <div>
                     <label htmlFor="genre">Genre</label>
@@ -67,10 +69,11 @@ export default function CreateForm() {
                         id="genre"
                         value={formValues.genre}
                         onChange={onChangeHandler}
+                        style={error?.genre == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
-                {error && <div className={styles.error}>
-                    <p>{error}</p>
+                {error?.genre === '' && <div className={styles.error}>
+                    <p>Genre is required</p>
                 </div>}
                 <div>
                     <label htmlFor="year">Year</label>
@@ -80,10 +83,11 @@ export default function CreateForm() {
                         id="year"
                         value={formValues.year}
                         onChange={onChangeHandler}
+                        style={error?.year == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
-                {error && <div className={styles.error}>
-                    <p>{error}</p>
+                {error?.year === '' && <div className={styles.error}>
+                    <p>Year is required</p>
                 </div>}
                 <div>
                     <label htmlFor="price">Price</label>
@@ -93,10 +97,11 @@ export default function CreateForm() {
                         id="price"
                         value={formValues.price}
                         onChange={onChangeHandler}
+                        style={error?.price == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
-                {error && <div className={styles.error}>
-                    <p>{error}</p>
+                {error?.price === '' && <div className={styles.error}>
+                    <p>Price is required</p>
                 </div>}
                 <div>
                     <label htmlFor="imageUrl">ImageUrl</label>
@@ -106,10 +111,11 @@ export default function CreateForm() {
                         id="imageUrl"
                         value={formValues.imageUrl}
                         onChange={onChangeHandler}
+                        style={error?.imageUrl == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
-                {error && <div className={styles.error}>
-                    <p>{error}</p>
+                {error?.imageUrl === '' && <div className={styles.error}>
+                    <p>ImageURL is required</p>
                 </div>}
                 <div>
                     <label htmlFor="description">Description</label>
@@ -119,8 +125,12 @@ export default function CreateForm() {
                         id="description"
                         value={formValues.description}
                         onChange={onChangeHandler}
+                        style={error?.description == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
+                {error?.description === '' && <div className={styles.error}>
+                    <p>Description is required</p>
+                </div>}
 
                 <div style={{ padding: '15px' }}>
                     <div className={styles.buy_now_button}>

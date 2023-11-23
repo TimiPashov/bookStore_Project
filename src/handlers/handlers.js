@@ -14,6 +14,7 @@ export async function loginHandler(data) {
 
     const result = await login(data);
     if (result.code === 403) {
+        console.log(result)
         throw new Error(result.message)
     }
     return result;
@@ -34,7 +35,11 @@ export async function registerHandler(data) {
 export async function createHandler(data, token) {
 
     if (Object.values(data).some(x => x === '')) {
-        throw new Error('All fields required');
+        const err = {};
+        for (let field of Object.entries(data)){
+            err[field[0]] = field[1];
+        }
+        throw err;
     }
     await createBook(data, token);
 

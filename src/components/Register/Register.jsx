@@ -11,6 +11,7 @@ export default function Register() {
     const [repass, setRepass] = useState('');
     const { onRegisterSubmit } = useUserContext();
     const [error, setError] = useState(false)
+   
 
     return (
         <div id="templatemo_content_right" className={styles.templatemo_content_right}>
@@ -53,9 +54,9 @@ export default function Register() {
                         onChange={(e) => setRepass(e.target.value)}
                     />
                 </div>
-                {error?.code == 'missmatch'  && <div className={styles.error}>
+                {error?.code == 'missmatch'  || error?.code === 400 ? <div className={styles.error}>
                     <p>{error.message}</p>
-                </div>}
+                </div> : null}
 
                 <div style={{ padding: '15px' }}>
                     <div className={styles.buy_now_button}>
