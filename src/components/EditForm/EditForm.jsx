@@ -71,8 +71,12 @@ export default function EditForm() {
                         id="title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        style={error?.title == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
+                {error?.title === '' && <div className={styles.error}>
+                    <p>Title is required</p>
+                </div>}
                 <div>
                     <label htmlFor="author">Author</label>
                     <input
@@ -81,8 +85,12 @@ export default function EditForm() {
                         id="author"
                         value={author}
                         onChange={(e) => setAuthor(e.target.value)}
+                        style={error?.author == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
+                {error?.author === '' && <div className={styles.error}>
+                    <p>Author is required</p>
+                </div>}
                 <div>
                     <label htmlFor="genre">Genre</label>
                     <input
@@ -91,8 +99,12 @@ export default function EditForm() {
                         id="genre"
                         value={genre}
                         onChange={(e) => setGenre(e.target.value)}
+                        style={error?.genre == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
+                {error?.genre === '' && <div className={styles.error}>
+                    <p>Genre is required</p>
+                </div>}
                 <div>
                     <label htmlFor="year">Year</label>
                     <input
@@ -101,8 +113,12 @@ export default function EditForm() {
                         id="year"
                         value={year}
                         onChange={(e) => setYear(e.target.value)}
+                        style={error?.year == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
+                {error?.year === '' && <div className={styles.error}>
+                    <p>Year is required</p>
+                </div>}
                 <div>
                     <label htmlFor="price">Price</label>
                     <input
@@ -111,8 +127,12 @@ export default function EditForm() {
                         id="price"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
+                        style={error?.price == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
+                {error?.price === '' && <div className={styles.error}>
+                    <p>Price is required</p>
+                </div>}
                 <div>
                     <label htmlFor="imageUrl">ImageUrl</label>
                     <input
@@ -121,8 +141,12 @@ export default function EditForm() {
                         id="imageUrl"
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)}
+                        style={error?.imageUrl == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
+                {error?.imageUrl === '' && <div className={styles.error}>
+                    <p>ImageURl is required</p>
+                </div>}
                 <div>
                     <label htmlFor="description">Description</label>
                     <textarea
@@ -131,9 +155,12 @@ export default function EditForm() {
                         id="description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                        style={error?.description == '' ? { border: '1px solid red' } : null}
                     />
                 </div>
-
+                {error?.description === '' && <div className={styles.error}>
+                    <p>Description is required</p>
+                </div>}
                 <div style={{ padding: '15px' }}>
                     <div className={styles.buy_now_button}>
                         <Link onClick={(e) => onSubmit(e, id)}>Submit</Link>

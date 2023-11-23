@@ -8,7 +8,6 @@ export default function Catalog() {
   useEffect(() => {
     getAllBooks().then(books => setBooks(books));
   }, []);
-  console.log(books)
   return (
     <div className={styles.templatemo_content_right}>
       {Object.values(books).map(b => <BookCard key={b._id} book={b} />)}

@@ -14,7 +14,6 @@ export async function loginHandler(data) {
 
     const result = await login(data);
     if (result.code === 403) {
-        console.log(result)
         throw new Error(result.message)
     }
     return result;
