@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
@@ -28,6 +28,9 @@ export default function CreateForm() {
         }
 
     });
+    if (!token) {
+        return <Navigate to="/login" />
+    }
     return (
         <div id="templatemo_content_right" className={styles.templatemo_content_right}>
 

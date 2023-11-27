@@ -21,6 +21,7 @@ export default function EditForm() {
     const userData = useContext(UserContext);
     const token = userData.user && userData.user.accessToken;
 
+
     useEffect(() => {
         getBookById(id)
             .then(response => setBook(response));
@@ -46,7 +47,7 @@ export default function EditForm() {
         try {
             if (Object.values(newBook).some(x => x === '')) {
                 const err = {};
-                for (let field of Object.entries(newBook)){
+                for (let field of Object.entries(newBook)) {
                     err[field[0]] = field[1];
                 }
                 throw err;
@@ -61,7 +62,8 @@ export default function EditForm() {
     }
 
     return (
-        <div className={styles.templatemo_content_right}>
+
+        < div className={styles.templatemo_content_right} >
             <form method='put' onSubmit={(e) => onSubmit(e, id)}>
                 <div>
                     <label htmlFor="title">Title</label>
@@ -170,7 +172,7 @@ export default function EditForm() {
                     </div>
                 </div>
             </form>
-        </div>
+        </div >
 
     );
 }

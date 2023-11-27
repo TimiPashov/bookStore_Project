@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styles from './Categories.module.css'
 
 
@@ -8,7 +9,7 @@ export default function Categories() {
         <h1>Categories</h1>
         <ul>
           <li>
-            <a href="#">Adventure stories</a>
+            <NavLink to="/adventure">Adventure stories</NavLink>
           </li>
           <li>
             <a href="#">Classics</a>

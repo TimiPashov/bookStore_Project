@@ -13,6 +13,7 @@ import Register from './components/Register/Register'
 import Login from './components/Login/Login'
 
 import styles from './App.module.css'
+import { RouteGuard } from './components/common/RouteGuard'
 
 function App() {
 
@@ -29,9 +30,12 @@ function App() {
                 <Route path='/' element={<Catalog />} />
                 <Route path='/details/:id' element={<Details />} />
                 <Route path='/edit/:id' element={<EditForm />} />
-                <Route path='/create' element={<CreateForm />} />
+                <Route element={<RouteGuard />} >
+                  <Route path='/create' element={<CreateForm />} />
+                </Route>
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/adventure' element={<Catalog />} />
               </Routes>
               <div className={styles.cleaner_with_height}>&nbsp;</div>
             </div>

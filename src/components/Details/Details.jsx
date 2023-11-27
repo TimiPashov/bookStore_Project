@@ -24,8 +24,6 @@ export default function Details() {
         navigate('/');
     }
 
-
-
     return (
         <div id="templatemo_content_right" className={styles.templatemo_content_right}>
 

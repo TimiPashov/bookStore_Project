@@ -5,6 +5,7 @@ import styles from './Catalog.module.css';
 export default function Catalog() {
   const [books, setBooks] = useState([]);
 
+
   useEffect(() => {
     getAllBooks().then(books => setBooks(books));
   }, []);
