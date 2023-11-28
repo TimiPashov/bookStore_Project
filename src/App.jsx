@@ -2,6 +2,7 @@ import { Route, Routes, } from 'react-router-dom'
 import { AuthProvider } from './contexts/UserContext'
 import { RouteGuard } from './components/common/RouteGuard'
 import { BookProvider } from './contexts/BookContext'
+import { LoggedInGuard } from './components/common/LoggedInGuard'
 
 
 import Catalog from "./components/Catalog/Catalog"
@@ -31,12 +32,14 @@ function App() {
                 <Routes>
                   <Route path='/' element={<Catalog />} />
                   <Route path='/details/:id' element={<Details />} />
-                  <Route path='/edit/:id' element={<EditForm />} />
                   <Route element={<RouteGuard />} >
                     <Route path='/create' element={<CreateForm />} />
+                    <Route path='/edit/:id' element={<EditForm />} />
                   </Route>
-                  <Route path='/register' element={<Register />} />
-                  <Route path='/login' element={<Login />} />
+                  <Route element={<LoggedInGuard />} >
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/login' element={<Login />} />
+                  </Route>
                   <Route path='/adventure' element={<Catalog />} />
                 </Routes>
                 <div className={styles.cleaner_with_height}>&nbsp;</div>
