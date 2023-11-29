@@ -12,7 +12,12 @@ export function useLocalStorage(key, initialValue) {
 
     function setLocalStorageState(value) {
         setState(value);
-        if(value){
+        if (value) {
+            let serializedState;
+            if (typeof value === 'function') {
+                serializedState = value(state);
+                localStorage.setItem(key, JSON.stringify(serializedState));
+            }
             localStorage.setItem(key, JSON.stringify(value));
         }
     }
