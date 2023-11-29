@@ -17,8 +17,9 @@ export function useLocalStorage(key, initialValue) {
             if (typeof value === 'function') {
                 serializedState = value(state);
                 localStorage.setItem(key, JSON.stringify(serializedState));
+            } else {
+                localStorage.setItem(key, JSON.stringify(value));
             }
-            localStorage.setItem(key, JSON.stringify(value));
         }
     }
 
