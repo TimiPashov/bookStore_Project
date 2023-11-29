@@ -33,8 +33,8 @@ function App() {
                   <Route path='/' element={<Catalog />} />
                   <Route path='/details/:id' element={<Details />} />
                   <Route element={<RouteGuard />} >
-                    <Route path='/create' element={<CreateForm />} />
                     <Route path='/edit/:id' element={<EditForm />} />
+                    <Route path='/create' element={<CreateForm />} />
                   </Route>
                   <Route element={<LoggedInGuard />} >
                     <Route path='/register' element={<Register />} />

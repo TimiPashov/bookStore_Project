@@ -7,6 +7,7 @@ import styles from './Details.module.css';
 
 export default function Details() {
     const [book, setBook] = useState({});
+    const [loading, setLoading] = useState(true);
     const { id } = useParams();
     const navigate = useNavigate();
     const userData = useContext(UserContext);
@@ -16,12 +17,19 @@ export default function Details() {
     useEffect(() => {
         fetch('http://localhost:3030/data/books/' + id)
             .then(response => response.json())
-            .then(result => setBook(result));
+            .then(result => {
+                setBook(result);
+                setLoading(false);
+            });
     }, [id]);
 
     async function onDelete(id) {
         await deleteBook(id, userData.user.accessToken);
         navigate('/');
+    }
+
+    if (loading) {
+        return <h1>Loading...</h1>
     }
 
     return (

@@ -6,7 +6,8 @@ import { UserContext } from '../../contexts/UserContext';
 import styles from './CreateForm.module.css';
 import { createHandler } from '../../handlers/handlers';
 
-export default function CreateForm() {
+
+export default function CreateForm() {  
     const navigate = useNavigate();
     const userData = useContext(UserContext);
     const [error, setError] = useState(false)

@@ -13,7 +13,7 @@ export async function getBookById(id) {
     return book;
 }
 export async function createBook(values, token) {
-    
+
     const response = await fetch(baseURL, {
         headers: {
             'Content-type': 'application/json',
@@ -47,4 +47,9 @@ export async function deleteBook(id, token) {
             'X-Authorization': token
         }
     });
+}
+
+export async function testGetBook(id, books) {
+    console.log(books.filter(b => b._id === id))
+    return books.filter(b => b._id === id)[0];
 }

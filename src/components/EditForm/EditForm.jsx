@@ -9,6 +9,7 @@ import styles from './EditForm.module.css';
 export default function EditForm() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [book, setBook] = useState({});
     const [title, setTitle] = useState('');
@@ -24,18 +25,21 @@ export default function EditForm() {
 
     useEffect(() => {
         getBookById(id)
-            .then(response => setBook(response));
+            .then(response => {
+                setBook(response)
+                setLoading(false)
+            });
     }, [id]);
 
 
     useEffect(() => {
-        setTitle(book.title || 'Loading...');
-        setAuthor(book.author || 'Loading...');
-        setGenre(book.genre || 'Loading...');
-        setYear(book.year || 'Loading...');
-        setPrice(book.price || 'Loading...');
-        setImageUrl(book.imageUrl || 'Loading...');
-        setDescription(book.description || 'Loading...');
+        setTitle(book.title || '');
+        setAuthor(book.author || '');
+        setGenre(book.genre || '');
+        setYear(book.year || '');
+        setPrice(book.price || '');
+        setImageUrl(book.imageUrl || '');
+        setDescription(book.description || '');
 
 
     }, [book]);
@@ -53,12 +57,17 @@ export default function EditForm() {
                 throw err;
             }
             await editBook(newBook, id, token)
+
             navigate('/details/' + id)
         } catch (err) {
             console.log(err)
             setError(err)
         }
 
+    }
+
+    if (loading) {
+        return <h1>Loading...</h1>
     }
 
     return (
