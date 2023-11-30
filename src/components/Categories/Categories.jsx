@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Categories.module.css'
 
 
@@ -9,31 +9,31 @@ export default function Categories() {
         <h1>Categories</h1>
         <ul>
           <li>
-            <NavLink to="/adventure">Adventure stories</NavLink>
+            <Link to="/search/adventure">Adventure stories</Link>
           </li>
           <li>
-            <a href="#">Classics</a>
+            <Link to="/search/classic">Classics</Link>
           </li>
           <li>
-            <a href="#">Crime</a>
+            <Link to="/search/crime">Crime</Link>
           </li>
           <li>
-            <a href="#">Fairy tales, fables, and folk tales</a>
+            <Link to="search/fables">Fairy tales, fables, and folk tales</Link>
           </li>
           <li>
-            <a href="#">Fantasy</a>
+            <Link to="/search/fantasy">Fantasy</Link>
           </li>
           <li>
-            <a href="#">Historical fiction</a>
+            <Link to="/search/history">Historical</Link>
           </li>
           <li>
-            <a href="#">Horror</a>
+            <Link to="/search/horror">Horror</Link>
           </li>
           <li>
-            <a href="#">Humour and satire</a>
+            <Link to="/search/humour">Humour and satire</Link>
           </li>
           <li>
-            <a href="#">Mystery</a>
+            <Link to="/search/mystery">Mystery</Link>
           </li>
         </ul>
       </div>

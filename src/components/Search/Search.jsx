@@ -16,7 +16,7 @@ export default function Search() {
 
     useEffect(() => {
         setResult(books.filter((b) => Object.values(b).some(v => (v.toString().toLowerCase()).includes(search.toString().toLowerCase())) && b));
-    }, [books])
+    }, [books, search])
 
     function onSearch(e, search) {
         e.preventDefault()
