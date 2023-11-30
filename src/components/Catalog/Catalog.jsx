@@ -14,7 +14,7 @@ export default function Catalog() {
         setBooks(result)
         setLoading(false)
       })
-  })
+  }, [])
   if (loading) {
     return <h1>Loading...</h1>
   }

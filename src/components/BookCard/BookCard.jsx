@@ -19,14 +19,14 @@ export default function BookCard({
             </h1>
             <img src={book.imageUrl} alt="image" />
             <div className={styles.product_info}>
-                <p>{book.description}</p>
+                <p>{book.description.slice(0, 50) + (book.description.slice(0, 50).length < 50 ? '' : '...')}</p>
                 <h3>${book.price}</h3>
-                {isUser && !isOwner ? <div className={styles.buy_now_button}>
-                    <a href="subpage.html">Buy Now</a>
-                </div> : null}
                 <div className={styles.detail_button}>
                     <Link to={`/details/${book._id}`}>Details</Link>
                 </div>
+                {isUser && !isOwner ? <div className={styles.buy_now_button}>
+                    <a href="subpage.html">Buy Now</a>
+                </div> : null}
             </div>
             <div className={styles.cleaner}>&nbsp;</div>
         </div>

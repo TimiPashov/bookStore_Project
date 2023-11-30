@@ -17,6 +17,7 @@ import Register from './components/Register/Register'
 import Login from './components/Login/Login'
 
 import styles from './App.module.css'
+import Search from './components/Search/Search'
 function App() {
 
   return (
@@ -31,6 +32,8 @@ function App() {
                 <Categories />
                 <Routes>
                   <Route path='/' element={<Catalog />} />
+                  <Route path='/search/:query' element={<Search />} />
+                  <Route path='/search' element={<Search />} />
                   <Route path='/details/:id' element={<Details />} />
                   <Route element={<RouteGuard />} >
                     <Route path='/edit/:id' element={<EditForm />} />
