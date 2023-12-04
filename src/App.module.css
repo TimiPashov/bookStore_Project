@@ -2,7 +2,7 @@
 	width: 960px;
 	margin: 0 auto;
 	padding: 0 10px;
-	background: #1c1c1b url(recource/images/templatemo_bg.jpg) repeat-y;
+	background: #1c1c1b url(/src/resource/images/templatemo_bg.jpg) repeat-y;
 }
 
 .bodyClass {

@@ -31,7 +31,7 @@
 	width: 100px;
 	padding: 4px 0 5px 0;
 	margin-bottom: 10px; 
-	background: url(recource/images/templatemo_btn_02.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_btn_02.jpg) no-repeat;
 	color: #FFFFFF;
 	font-weight: bold;
 	text-decoration: none;
@@ -43,7 +43,7 @@
 	width: 100px;
 	padding: 4px 0 5px 0;
 	margin-bottom: 10px; 
-	background: url(recource/images/templatemo_btn_02.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_btn_02.jpg) no-repeat;
 	color: #FFFFFF;
 	font-weight: bold;
 	text-decoration: none;
@@ -56,7 +56,7 @@
 	width: 100px;
 	padding: 4px 0 5px 0;
 	margin-bottom: 10px; 
-	background: url(recource/images/templatemo_btn_01.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_btn_01.jpg) no-repeat;
 	color: #ffffff;
 	font-weight: bold;
 	text-decoration: none;
@@ -68,7 +68,7 @@
 	width: 100px;
 	padding: 4px 0 5px 0;
 	margin-bottom: 10px; 
-	background: url(recource/images/templatemo_btn_01.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_btn_01.jpg) no-repeat;
 	color: #ffffff;
 	font-weight: bold;
 	text-decoration: none;

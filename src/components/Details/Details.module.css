@@ -3,7 +3,7 @@
 	margin: 0 0 20px 0;
 	font-size: 15px;
 	color: #cbc750;
-	background: url(recource/images/templatemo_h1_bg.jpg);
+	background: url(/src/resource/images/templatemo_h1_bg.jpg);
 }
 
 .templatemo_content_right h2 {
@@ -54,7 +54,7 @@
 	width: 100px;
 	padding: 4px 0 5px 0;
 	margin-bottom: 10px; 
-	background: url(recource/images/templatemo_btn_02.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_btn_02.jpg) no-repeat;
 	color: #FFFFFF;
 	font-weight: bold;
 	text-decoration: none;
@@ -66,7 +66,7 @@
 	width: 100px;
 	padding: 4px 0 5px 0;
 	margin-bottom: 10px; 
-	background: url(recource/images/templatemo_btn_02.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_btn_02.jpg) no-repeat;
 	color: #FFFFFF;
 	font-weight: bold;
 	text-decoration: none;
@@ -79,7 +79,7 @@
 	width: 100px;
 	padding: 4px 0 5px 0;
 	margin-bottom: 10px; 
-	background: url(recource/images/templatemo_btn_01.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_btn_01.jpg) no-repeat;
 	color: #ffffff;
 	font-weight: bold;
 	text-decoration: none;
@@ -91,7 +91,7 @@
 	width: 100px;
 	padding: 4px 0 5px 0;
 	margin-bottom: 10px; 
-	background: url(recource/images/templatemo_btn_01.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_btn_01.jpg) no-repeat;
 	color: #ffffff;
 	font-weight: bold;
 	text-decoration: none;
@@ -104,7 +104,7 @@
 	width: 100px;
 	padding: 4px 0 5px 0;
 	margin-bottom: 10px; 
-	background: url(recource/images/templatemo_btn_03.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_btn_03.jpg) no-repeat;
 	color: #FFFFFF;
 	font-weight: bold;
 	text-decoration: none;

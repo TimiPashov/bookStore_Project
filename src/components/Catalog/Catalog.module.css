@@ -8,7 +8,7 @@
 	margin: 0 0 20px 0;
 	font-size: 15px;
 	color: #cbc750;
-	background: url(recource/images/templatemo_h1_bg.jpg);
+	background: url(/src/resource/images/templatemo_h1_bg.jpg);
 }
 
 .templatemo_content_right h2 {

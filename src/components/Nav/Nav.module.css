@@ -1,12 +1,10 @@
-
-
 /* menu */
 
 .templatemo_menu {
 	clear: both;
 	width: 960px;
 	height: 45px;
-	background: url(/recource/images/templatemo_menu_bg.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_menu_bg.jpg) no-repeat;
 }
 
 .templatemo_menu ul {
@@ -15,11 +13,11 @@
 	list-style: none;
 }
 
-.templatemo_menu ul li{
+.templatemo_menu ul li {
 	display: inline;
 }
 
-.templatemo_menu ul li a{
+.templatemo_menu ul li a {
 	float: left;
 	padding: 0 20px;
 	font-size: 12px;
@@ -29,6 +27,7 @@
 	color: #969547;
 }
 
-.templatemo_menu li a:hover, .templatemo_menu li .current{
+.templatemo_menu li a:hover,
+.templatemo_menu li .current {
 	color: #fcf88e;
 }

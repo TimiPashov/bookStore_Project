@@ -4,7 +4,7 @@
 	height: 285px;
 	padding: 0;
 	margin: 0;
-	background: url(recource/images/templatemo_header_bg.jpg) no-repeat;
+	background: url(/src/resource/images/templatemo_header_bg.jpg) no-repeat;
 }
 
 .templatemo_header a,a:hover {
