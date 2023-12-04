@@ -1,22 +1,34 @@
-# React
-1. Downloaded a free hmtl template from a  site from google
-2. Refactored the html to jsx and divided it into React components
-3. first commite
-4. Instaleld react-router-dom library
-5. Fixed the navigation a tags to Links
-6. Impelented create form and request handler
-7. Implemented delete operating
-8. Implemented redirect to home on delete and create
-9. Implemented edit functionallity
-10. Made CreateForm controlled
-11. Fixed the Edit Form components to be a controlled one with predefined values
-12. Created Login, Register forms and installed Routes
-13. Implemented login/register functionallity,authorized requests
-14. Added guest/user functionallity
-15. Added login/register validation
+# Description
+The application is a book store, where each user can upload a book for sale.
 
-TODO. :
-create book validation,
-create game handling,
-profile page,
-buy functionallity
+# Features
+1. Catalog
+When the application first starts the guest/user will be able to see all uploaded books and their details.
+
+2. Details
+Upon clicking on the details for each book it will open a detailed information about the selected book.
+
+3. Login/Register
+The user can create his own profile and log in the application with email and password.
+
+4. CRUD book
+When logged in the user can create, edit and delete their own books.
+
+5. Buy book
+When looged in the user can buy a book only if the book is not created by the user.
+
+6. Search
+Search page will be availabe for all users or guests who visit the book store.
+
+# Application installation
+After downloading the repository:
+ Server init:
+1. Open CMD in the server folder and enter "npm install" to isntall all the server dependencies.
+2. Enter "node index.js" in the command prompt in the same folder.
+
+Application init:
+1. Open the CMD in the bookStore_Project folder and enter "npm install" to install the app dependencies.
+2. Enter "npm run dev" in the command prompt in the same folder
+3. To start the app, open the link provided in the terminal after entering the previous command
+
+
