@@ -24,10 +24,12 @@ Search page will be availabe for all users or guests who visit the book store.
  Server init:
 1. Open CMD in the server folder and enter "npm install" to isntall all the server dependencies.
 2. Enter "node index.js" in the command prompt in the same folder.
+3. There are 3 default books on the server 
+4. There are 2 default users: peter@abv.bg/123456, george@abv.bg/123456
 
 Application init:
 1. Open the CMD in the bookStore_Project folder and enter "npm install" to install the app dependencies.
-2. Enter "npm run dev" in the command prompt in the same folder
-3. To start the app, open the link provided in the terminal after entering the previous command
+2. Enter "npm run dev" in the command prompt in the same folder to start the app in developement mode
+3. To open the app in the browser, open the link provided in the terminal after entering the previous command
 
 
