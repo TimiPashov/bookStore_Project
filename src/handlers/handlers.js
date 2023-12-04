@@ -1,5 +1,7 @@
 
+
 import { createBook } from "../services/bookService";
+import { addPurchase } from "../services/purchaseService";
 import { login, register } from "../services/userService";
 
 
@@ -31,15 +33,22 @@ export async function registerHandler(data) {
     return result;
 }
 
-export async function createHandler(data, token) {
+export async function createHandler(data, token, books, setBooks) {
 
     if (Object.values(data).some(x => x === '')) {
         const err = {};
-        for (let field of Object.entries(data)){
+        for (let field of Object.entries(data)) {
             err[field[0]] = field[1];
         }
         throw err;
     }
-    await createBook(data, token);
+    const result = await createBook(data, token);
+    setBooks([...books, result])
+
+}
+
+export async function purchaseHandler(purchases, purchasesSetter, values, token) {
+    await addPurchase(values, token);
+    purchasesSetter([...purchases, values]);
 
 }

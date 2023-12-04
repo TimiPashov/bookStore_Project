@@ -37,7 +37,7 @@ export async function editBook({ title, author, genre, year, price, imageUrl, de
         },
         body: JSON.stringify(newBook)
     });
-    return response.json();
+    return await response.json();
 }
 
 export async function deleteBook(id, token) {

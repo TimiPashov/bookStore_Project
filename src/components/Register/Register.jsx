@@ -10,7 +10,8 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [repass, setRepass] = useState('');
     const { onRegisterSubmit } = useUserContext();
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
+    
    
 
     return (

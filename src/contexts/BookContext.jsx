@@ -14,7 +14,7 @@ export function BookProvider({ children }) {
     }, []);
 
     return (
-        <BookContext.Provider value={{ books }}>
+        <BookContext.Provider value={{ books, setBooks }}>
             {children}
         </BookContext.Provider>
     )

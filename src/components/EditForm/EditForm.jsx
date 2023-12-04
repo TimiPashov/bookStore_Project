@@ -4,11 +4,13 @@ import { editBook, getBookById } from '../../services/bookService';
 import { UserContext } from '../../contexts/UserContext';
 
 import styles from './EditForm.module.css';
+import { useBookContext } from '../../contexts/BookContext';
 
 
 export default function EditForm() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { books, setBooks } = useBookContext();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [book, setBook] = useState({});
@@ -56,8 +58,14 @@ export default function EditForm() {
                 }
                 throw err;
             }
-            await editBook(newBook, id, token)
-
+            const response = await editBook(newBook, id, token)
+            const result = books.map(b => {
+                if (b._id === id) {
+                    return response;
+                }
+                return b;
+            });
+            setBooks(result);
             navigate('/details/' + id)
         } catch (err) {
             console.log(err)
@@ -69,7 +77,6 @@ export default function EditForm() {
     if (loading) {
         return <h1>Loading...</h1>
     }
-
     return (
 
         < div className={styles.templatemo_content_right} >

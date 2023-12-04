@@ -5,11 +5,13 @@ import { UserContext } from '../../contexts/UserContext';
 
 import styles from './CreateForm.module.css';
 import { createHandler } from '../../handlers/handlers';
+import { useBookContext } from '../../contexts/BookContext';
 
 
-export default function CreateForm() {  
+export default function CreateForm() {
     const navigate = useNavigate();
     const userData = useContext(UserContext);
+    const { books, setBooks } = useBookContext();
     const [error, setError] = useState(false)
     const token = userData.user && userData.user.accessToken;
     const { formValues, onChangeHandler, onSubmit } = useForm({
@@ -22,7 +24,7 @@ export default function CreateForm() {
         description: ''
     }, async (values) => {
         try {
-            await createHandler(values, token);
+            await createHandler(values, token, books, setBooks);
             navigate('/');
         } catch (err) {
             setError(err)

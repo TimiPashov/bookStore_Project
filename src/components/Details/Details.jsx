@@ -3,35 +3,40 @@ import { useState, useEffect, useContext } from 'react';
 import { deleteBook } from '../../services/bookService';
 import { UserContext } from '../../contexts/UserContext';
 
+import { getAllpurchases } from '../../services/purchaseService';
+import { useBookContext } from '../../contexts/BookContext';
 import styles from './Details.module.css';
 
 export default function Details() {
+    const { books, setBooks } = useBookContext();
     const [book, setBook] = useState({});
     const [loading, setLoading] = useState(true);
+    const [purchases, setPurchases] = useState([]);
+    
     const { id } = useParams();
     const navigate = useNavigate();
     const userData = useContext(UserContext);
-    const isOwner = userData.user && userData.user._id === book._ownerId;
-
-
+    const result = books.filter(b => b._id === id)[0];
+    const isOwner = userData.user && userData.user._id === result._ownerId;
     useEffect(() => {
-        fetch('http://localhost:3030/data/books/' + id)
-            .then(response => response.json())
-            .then(result => {
-                setBook(result);
-                setLoading(false);
-            });
-    }, [id]);
+        getAllpurchases()
+        .then(result => setPurchases(result));
+    }, [])
+    
+    useEffect(() => {
+        setBook(result);
+        setLoading(false);
+    }, [result]);
 
     async function onDelete(id) {
         await deleteBook(id, userData.user.accessToken);
+        setBooks(books.filter(b => b._id !== id));
         navigate('/');
     }
 
     if (loading) {
         return <h1>Loading...</h1>
     }
-
     return (
         <div id="templatemo_content_right" className={styles.templatemo_content_right}>
 
@@ -43,6 +48,7 @@ export default function Details() {
                 <li>Year: {book.year}</li>
                 <li>Genre: {book.genre}</li>
                 <li>Price: {book.price}</li>
+                <li>Purchased: {purchases.filter(p => p.bookId === id).length} times</li>
             </ul>
 
             <p>{book.description}</p>
