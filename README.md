@@ -21,6 +21,8 @@ When looged in the user can buy a book only if the book is not created by the us
 Search page will be availabe for all users or guests who visit the book store.
 
 # Application installation
+ Download GitHub repo
+ 
  Server init:
 1. Open CMD in the server folder and enter "npm install" to isntall all the server dependencies.
 2. Enter "node index.js" in the command prompt in the same folder.
