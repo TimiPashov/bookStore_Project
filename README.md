@@ -34,4 +34,6 @@ Application init:
 2. Enter "npm run dev" in the command prompt in the same folder to start the app in developement mode
 3. To open the app in the browser, open the link provided in the terminal after entering the previous command
 
+# Firebase
+You can check out the deployed app in Firebase at this link: https://react-bookstore-bc5d4.web.app/
 
