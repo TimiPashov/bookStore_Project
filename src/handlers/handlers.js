@@ -52,3 +52,4 @@ export async function purchaseHandler(purchases, purchasesSetter, values, token)
     purchasesSetter([...purchases, values]);
 
 }
+

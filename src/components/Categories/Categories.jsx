@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 import styles from './Categories.module.css'
-
-
 export default function Categories() {
   return (
     <div className={styles.templatemo_content_left}>

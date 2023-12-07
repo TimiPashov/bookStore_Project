@@ -11,12 +11,12 @@ export default function Search() {
     const { books } = useBookContext();
     const { query } = useParams();
     const [search, setSearch] = useState(query || '');
-    const [result, setResult] = useState(books);
+    const [result, setResult] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         setResult(books.filter((b) => Object.values(b).some(v => (v.toString().toLowerCase()).includes(search.toString().toLowerCase())) && b));
-    }, [books, search])
+    }, [books, query])
 
     function onSearch(e, search) {
         e.preventDefault()
