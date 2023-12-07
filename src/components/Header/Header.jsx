@@ -10,17 +10,17 @@ export default function Header() {
           <span>25%</span> discounts for purchase over $80
         </p>
         <a href="subpage.html" style={{ marginLeft: 50 }}>
-          Read more...
+         
         </a>
       </div>
       <div id="templatemo_new_books" className={style.templatemo_new_books}>
         <ul>
-          <li>Suspen disse</li>
-          <li>Maece nas metus</li>
-          <li>In sed risus ac feli</li>
+          <li>Lord of the rings</li>
+          <li>Dune</li>
+          <li>Harry Potter</li>
         </ul>
         <a href="subpage.html" style={{ marginLeft: 50 }}>
-          Read more...
+         
         </a>
       </div>
     </div>
