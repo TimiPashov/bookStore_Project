@@ -68,7 +68,6 @@ export default function EditForm() {
             setBooks(result);
             navigate('/details/' + id)
         } catch (err) {
-            console.log(err)
             setError(err)
         }
 

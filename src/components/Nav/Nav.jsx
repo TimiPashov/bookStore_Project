@@ -25,8 +25,8 @@ export default function Nav() {
             <NavLink to="/register">Register</NavLink>
           </li>
         </div>}
-        {isUser && <li className="welcome-message">
-          <a style={{ color: "yellow" }}>{`Welcome, ${userData.user.email}`}</a>
+        {isUser && <li>
+          <NavLink to="/user">{`Welcome, ${userData.user.email}`}</NavLink>
         </li>}
       </ul>
     </div>

@@ -18,6 +18,7 @@ import Login from './components/Login/Login'
 
 import styles from './App.module.css'
 import Search from './components/Search/Search'
+import { User } from './components/User/User'
 function App() {
 
   return (
@@ -38,6 +39,7 @@ function App() {
                   <Route element={<RouteGuard />} >
                     <Route path='/edit/:id' element={<EditForm />} />
                     <Route path='/create' element={<CreateForm />} />
+                    <Route path='/user' element={<User />} />
                   </Route>
                   <Route element={<LoggedInGuard />} >
                     <Route path='/register' element={<Register />} />

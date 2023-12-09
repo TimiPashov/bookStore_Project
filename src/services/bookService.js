@@ -50,6 +50,6 @@ export async function deleteBook(id, token) {
 }
 
 export async function testGetBook(id, books) {
-    console.log(books.filter(b => b._id === id))
+    
     return books.filter(b => b._id === id)[0];
 }
