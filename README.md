@@ -20,6 +20,9 @@ When looged in the user can buy a book only if the book is not created by the us
 6. Search -
 Search page will be availabe for all users or guests who visit the book store.
 
+7. Profile page - 
+A personal profile page for the currently logged in user.
+
 # Application installation
  Download GitHub repo
  
@@ -30,7 +33,7 @@ Search page will be availabe for all users or guests who visit the book store.
 4. There are 2 default users: peter@abv.bg/123456, george@abv.bg/123456
 
 Application init:
-1. Open the CMD in the bookStore_Project folder and enter "npm install" to install the app dependencies.
+1. Open a new terminal in the bookStore_Project folder and enter "npm install" to install the app dependencies.
 2. Enter "npm run dev" in the command prompt in the same folder to start the app in developement mode
 3. To open the app in the browser, open the link provided in the terminal after entering the previous command
 
